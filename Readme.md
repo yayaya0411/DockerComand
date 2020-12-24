@@ -1,3 +1,13 @@
+ref: https://docs.docker.com/engine/reference/commandline/docker/
+
+#### DOCKER 物件資訊
+`docker inspect [OPTIONS] [ID/NAME]`
+#####  [OPTIONS]
+```
+-f, --format 將結果format
+-s, --size 完整file size
+--type
+```
 
 ## Image
 
@@ -25,6 +35,7 @@ TAG 指定image的tag
 ```
 -o, --output 寫成檔案
 ```
+
 #### 讀取 LOCAL IMAGES 進入 container
 `docker load -i [FILE.tar]` 適合多平台
 `docker load < [FILE.tar]` STDIN，接收方可能會無法load
