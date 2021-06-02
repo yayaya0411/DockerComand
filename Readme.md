@@ -29,7 +29,7 @@ TAG 指定image的tag
 ```
 
 #### 將 IMAGES 存入本機
-`docker save -o [FILE.tar] [REPOSITORY[:TAG]]` 適合多平台
+`docker save -o [FILE.tar] [REPOSITORY[:TAG]]` 適合多平台  
 `docker save [REPOSITORY[:TAG]] > [FILE.tar]` STDOUT，接收方可能會無法load
 ##### [OPTIONS]
 ```
@@ -37,7 +37,7 @@ TAG 指定image的tag
 ```
 
 #### 讀取 LOCAL IMAGES 進入 container
-`docker load -i [FILE.tar]` 適合多平台
+`docker load -i [FILE.tar]` 適合多平台  
 `docker load < [FILE.tar]` STDIN，接收方可能會無法load
 
 ##### [OPTIONS]:
@@ -49,7 +49,7 @@ TAG 指定image的tag
 `docker rmi [IMAGE ID/NAME]`
 
 #### 透過Dockerfile建立image
-`docker build [OPTIONS] PATH/URL .`
+`docker build [OPTIONS] PATH/URL .`  
 ex.`docker build -t image:tag .`
 
 ##### [OPTIONS]
@@ -75,7 +75,7 @@ CMD [COMMEND] # 執行docker run 時會執行的指令
 ## Container
 
 #### 透過 iamge 執行並產生一個新的 container
-`docker run [OPTIONS] [REPOSITORY[:TAG]] [COMMEND]`
+`docker run [OPTIONS] [REPOSITORY[:TAG]] [COMMEND]`  
 ex.`docker run --name test -it -p 5000:5000 python:3.7 /bin/bash`
 
 ##### [OPTIONS]
