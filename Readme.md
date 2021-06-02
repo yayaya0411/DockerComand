@@ -1,4 +1,4 @@
-ref: https://docs.docker.com/engine/reference/commandline/docker/
+uef: https://docs.docker.com/engine/reference/commandline/docker/
 
 #### DOCKER 物件資訊
 `docker inspect [OPTIONS] [ID/NAME]`
@@ -47,16 +47,36 @@ TAG 指定image的tag
 
 #### 刪除 image
 `docker rmi [IMAGE ID/NAME]`
+
+#### 透過Dockerfile建立image
+`docker build [OPTIONS] PATH/URL .`
+ex.`docker build -t image:tag .`
+
+##### [OPTIONS]
+```
+-t, --tag 給定新生成的image `name:tag`  
+```
+
+#### 撰寫Dockerfile
+```
+建立一個Dockerfile沒有副檔名的文字檔案:
+FROM [IMAGE]
+MAINTAINER [AUTHOR NAME]
+WORKDIR [DIR] # docker啟動時的工作目錄
+RUN [COMMEND] # docker起動image時執行指令
+ADD [FILE] # local端tar.gz檔案複製到image內，並解壓縮，也可以是URL，建議使用COPY而不要用ADD
+COPY [FILE] # local端檔案複製到image內，建議使用
+ENV [PATH] # 設定環境變數
+CMD [COMMEND] # 執行docker run 時會執行的指令
+```
+
+
 ******
 ## Container
 
 #### 透過 iamge 執行並產生一個新的 container
-`docker run [NAME] [OPTIONS] [REPOSITORY[:TAG]] [COMMEND]`
+`docker run [OPTIONS] [REPOSITORY[:TAG]] [COMMEND]`
 ex.`docker run --name test -it -p 5000:5000 python:3.7 /bin/bash`
-##### [NAME]
-```
---name  給定啟動的container名字
-```
 
 ##### [OPTIONS]
 ```
@@ -64,6 +84,8 @@ ex.`docker run --name test -it -p 5000:5000 python:3.7 /bin/bash`
 -t, --tty         配置一個終端機，Container的螢幕會接到原來的螢幕上。
 -d, --detach      在背景執行
 -p, --port        使用指定通訊埠進行網路通訊，指定本機port 對應 container port
+--name            給定啟動的container名字
+--rm              執行完畢後刪除container
 ```
 ##### [COMMEND]
 ```
@@ -87,7 +109,7 @@ ex.`docker run --name test -it -p 5000:5000 python:3.7 /bin/bash`
 ```
 
 #### 從外部/Container 複製檔案到 container/外部
-`docker cp [OPTIONS] CONTAINER:SRC_PATH DEST_PATH`
+`docker cp [OPTIONS] CONTAINER:SRC_PATH DEST_PATH`  
 `docker cp [OPTIONS] SRC_PATH CONTAINER:DEST_PATH`
 
 #### 將修改後的 container 提交存成 image
